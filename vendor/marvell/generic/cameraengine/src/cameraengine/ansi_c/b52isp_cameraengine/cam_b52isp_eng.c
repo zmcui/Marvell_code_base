@@ -47,3 +47,23 @@ const _CAM_DriverEntry entry_b52isp =
 	_SendCommand,
 };
 
+static CAM_Error _set_sensor_id( _CAM_B52IspState *pCameraState, CAM_Int32s iSensorID )
+{
+/*to do*/
+
+	pCameraState->stShotParamSetting.eShotMode = pCameraState->bRecordingHint ?
+		pCameraState->eVideoShotMode : pCameraState->eCaptureShotMode;
+
+	error = isp_set_shotmode( pCameraState->hIspHandle, pCameraState->stShotParamSetting.eShotMode );
+	ASSERT_CAM_ERROR( error );
+
+	error = isp_get_shotparams( pCameraState->hIspHandle, &pCameraState->stShotParamSetting );
+	ASSERT_CAM_ERROR( error );
+
+  /* stShotParamSetting by eShotmode*/
+  TRACE(CAM_ERROR, "cuizm== bRecordingHint is %d, eShotmode is %d", pCameraState->bRecordingHint, pCameraState->stShotParamSetting.eShotMode);
+  TRACE(CAM_ERROR, "cuizm== eFocusMode is %d", pCameraState->stShotParamSetting.eFocusMode);
+
+/*to do*/
+
+}

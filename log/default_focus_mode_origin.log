@@ -1,0 +1,105 @@
+01-09 07:37:25.979: E/CameraMrvl(8277): cuizm== Engine E
+01-09 07:37:26.033: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.033: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 3
+01-09 07:37:26.033: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 3
+01-09 07:37:26.033: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 7
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 3
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 3
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 7
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 5
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 3
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 3
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 0, eFocusMode = 3
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.034: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.037: E/MrvlCameraEngine(8277): cuizm== bRecordingHint is 0, eShotmode is 1
+01-09 07:37:26.037: E/MrvlCameraEngine(8277): cuizm== eFocusMode is 3
+01-09 07:37:26.041: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.041: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = continuous-picture
+01-09 07:37:26.041: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 0
+01-09 07:37:26.041: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 3
+01-09 07:37:26.044: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.045: E/CameraMrvl(8277): cuizm== Engine X
+01-09 07:37:26.111: E/CameraMrvl(8277): cuizm== Engine E
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 0
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 7
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.173: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.175: E/MrvlCameraEngine(8277): cuizm== bRecordingHint is 0, eShotmode is 1
+01-09 07:37:26.175: E/MrvlCameraEngine(8277): cuizm== eFocusMode is 0
+01-09 07:37:26.178: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.178: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = auto
+01-09 07:37:26.178: E/CameraMrvl(8277): cuizm== cesetting = 0, ce_idx = 0
+01-09 07:37:26.180: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.180: E/CameraMrvl(8277): cuizm== Engine X
+01-09 07:37:26.415: E/CameraMrvl(8277): cuizm== Engine E
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 0
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 7
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.454: D/MrvlCameraEngine(8277): cuizm== _get_default_shot_mode_setting IN eFlashMode = 1, eFocusMode = 3
+01-09 07:37:26.456: E/MrvlCameraEngine(8277): cuizm== bRecordingHint is 0, eShotmode is 1
+01-09 07:37:26.456: E/MrvlCameraEngine(8277): cuizm== eFocusMode is 0
+01-09 07:37:26.459: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.460: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = auto
+01-09 07:37:26.460: E/CameraMrvl(8277): cuizm== cesetting = 0, ce_idx = 0
+01-09 07:37:26.461: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.461: E/CameraMrvl(8277): cuizm== Engine X
+01-09 07:37:26.611: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.611: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = auto
+01-09 07:37:26.611: E/CameraMrvl(8277): cuizm== cesetting = 0, ce_idx = 0
+01-09 07:37:26.616: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.643: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.644: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = auto
+01-09 07:37:26.644: E/CameraMrvl(8277): cuizm== cesetting = 0, ce_idx = 0
+01-09 07:37:26.648: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.658: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.659: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = auto
+01-09 07:37:26.659: E/CameraMrvl(8277): cuizm== cesetting = 0, ce_idx = 0
+01-09 07:37:26.662: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.673: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.674: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = continuous-picture
+01-09 07:37:26.674: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 0
+01-09 07:37:26.674: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 2
+01-09 07:37:26.674: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 3
+01-09 07:37:26.678: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.692: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.693: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = continuous-picture
+01-09 07:37:26.693: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 0
+01-09 07:37:26.693: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 2
+01-09 07:37:26.693: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 3
+01-09 07:37:26.696: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.711: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.711: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = continuous-picture
+01-09 07:37:26.711: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 0
+01-09 07:37:26.712: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 2
+01-09 07:37:26.712: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 3
+01-09 07:37:26.714: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:26.730: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:26.731: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = continuous-picture
+01-09 07:37:26.731: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 0
+01-09 07:37:26.731: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 2
+01-09 07:37:26.731: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 3
+01-09 07:37:26.741: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:27.012: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:27.013: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = continuous-picture
+01-09 07:37:27.013: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 0
+01-09 07:37:27.013: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 2
+01-09 07:37:27.013: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 3
+01-09 07:37:27.019: E/CameraMrvl(8277): cuizm== setParameters X
+01-09 07:37:27.278: E/CameraMrvl(8277): cuizm== setParameters E
+01-09 07:37:27.279: E/CameraMrvl(8277): cuizm== ceUpdateSceneModeSetting IN KEY_FOCUS_MODE = continuous-picture
+01-09 07:37:27.279: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 0
+01-09 07:37:27.279: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 2
+01-09 07:37:27.279: E/CameraMrvl(8277): cuizm== cesetting = 3, ce_idx = 3
+01-09 07:37:27.286: E/CameraMrvl(8277): cuizm== setParameters X
