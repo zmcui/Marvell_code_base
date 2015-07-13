@@ -1,3 +1,181 @@
+/******************************************************************************
+//(C) Copyright [2013 - 2014] Marvell International Ltd.
+//All Rights Reserved
+******************************************************************************/
+
+CAM_Error isp_query_capability( void *hIspHandle, CAM_Int32s iSensorID, CAM_CameraCapability *pCameraCap )
+{
+	LOG_E();
+	_CAM_IspState *pIspState = (_CAM_IspState*)hIspHandle;
+	_CAM_SensorInfo       stSensorInfo;
+	_CAM_SystemConfig     stSystemConfig;
+	CAM_PortCapability    *pPortCap = NULL;
+	CAM_Int8u             i;
+	CAM_Bool              bIsBigSensor, bIsDualCamera;
+	CAM_Int32s            ret = 0;
+	CAM_Bool			  bIsBackSensor;
+	CAM_Int32s            iSensorWidth;
+	CAM_ModuleInfo        *pModuleInfo;
+	char value_rawdump[PROPERTY_VALUE_MAX];
+
+	_CHECK_BAD_POINTER( pCameraCap );
+	_CHECK_BAD_POINTER( hIspHandle );
+
+	ASSERT( 0 < giCurrentSensorCnt );
+	ASSERT( 0 <= iSensorID && iSensorID < giCurrentSensorCnt );
+
+	property_get(PROP_RAW_DUMP, value_rawdump, "0");
+	// get sensor attribute
+	stSensorInfo = gCurrentSensorList[iSensorID];
+	pModuleInfo = &(stSensorInfo.stSensorProp.stModuleInfo);
+
+	if (pIspState->bRecordingHint)
+	{
+		iSensorWidth = pModuleInfo->stResolution.iWidth / pModuleInfo->fSensorBin[BIN_MODE_VIDEO];
+	}
+	else
+	{
+		iSensorWidth = pModuleInfo->stResolution.iWidth / pModuleInfo->fSensorBin[BIN_MODE_PREVIEW];
+	}
+	bIsBigSensor = iSensorWidth > B52_LINE_BUFFER_LENGTH;
+
+	bIsBackSensor = gCurrentSensorList[iSensorID].stSensorProp.iFacing == CAM_SENSOR_FACING_BACK;
+
+	if ( pIspState )
+	{
+		bIsDualCamera = pIspState->bIsDualCamera;
+	}
+	/*else
+	{
+		bIsDualCamera = 0;   // coverity issue CID 30822 : Logically dead code
+	}*/
+
+	if ( hIspHandle && pIspState->stSystemConfig.iPipelineNumber > 0 )
+	{
+		stSystemConfig = pIspState->stSystemConfig;
+	}
+	else
+	{
+		// get pipeline strategy according to cfg file, single camera by dflt.
+		ret = parse_pipeline_configuration( B52_PIPELINE_CONFIG_FILE, &stSystemConfig, bIsBigSensor, gCurrentSensorList[iSensorID].stSensorProp.stModuleInfo.fFullSizeFps,
+				bIsDualCamera, gCurrentSensorList[iSensorID].stSensorProp.iFacing);
+		ASSERT( ret == 0 );
+	}
+
+	// TODO: get preview/video/still/video_snapshot port capability according to sensor, ISP & cfg info
+	pPortCap = &pCameraCap->stPortCapability[CAM_PORT_PREVIEW];
+
+	pPortCap->bArbitrarySize  = CAM_TRUE;
+	pPortCap->stMin.iWidth    = 176;
+	pPortCap->stMin.iHeight   = 144;
+	pPortCap->stMax.iWidth    = 1920;
+	pPortCap->stMax.iHeight   = 1080;
+
+	char value[PROPERTY_VALUE_MAX];
+	property_get(PROP_PLATFORM_CMTB, value, "");
+
+	if (strcmp(value, "")) {
+		pPortCap->stMax.iWidth  = pIspState->stSensor.stSensorProp.stModuleInfo.stResolution.iWidth;
+		pPortCap->stMax.iHeight = pIspState->stSensor.stSensorProp.stModuleInfo.stResolution.iHeight;
+	}
+
+	pPortCap->iSupportedFormatCnt = B52_MAX_OUTPUT_FORMAT;
+	for ( i = 0; i < pPortCap->iSupportedFormatCnt; i++ )
+	{
+		pPortCap->eSupportedFormat[i] = gB52OutputFormatList[i];
+	}
+
+	pPortCap = &pCameraCap->stPortCapability[CAM_PORT_VIDEO];
+
+	pPortCap->bArbitrarySize  = CAM_TRUE;
+	pPortCap->stMin.iWidth    = 176;
+	pPortCap->stMin.iHeight   = 144;
+	pPortCap->stMax.iWidth    = 1920;
+	pPortCap->stMax.iHeight   = 1080;
+
+	pPortCap->iSupportedFormatCnt = B52_MAX_OUTPUT_FORMAT;
+	for ( i = 0; i < pPortCap->iSupportedFormatCnt; i++ )
+	{
+		pPortCap->eSupportedFormat[i] = gB52OutputFormatList[i];
+	}
+
+	pPortCap = &pCameraCap->stPortCapability[CAM_PORT_STILL];
+
+	pPortCap->bArbitrarySize  = CAM_TRUE;
+	pPortCap->stMin.iWidth    = 176;
+	pPortCap->stMin.iHeight   = 144;
+	pPortCap->stMax.iWidth    = pIspState->stSystemConfig.eStrategy == CAM_PIPELINE_STRATEGY_OFFLINE || 2 == atoi(value_rawdump) ?
+		pIspState->stCurrentSensorRawSize.iWidth : pIspState->stCurrentIDIRawSize.iWidth;
+	pPortCap->stMax.iHeight   = pIspState->stSystemConfig.eStrategy == CAM_PIPELINE_STRATEGY_OFFLINE || 2 == atoi(value_rawdump) ?
+		pIspState->stCurrentSensorRawSize.iHeight : pIspState->stCurrentIDIRawSize.iHeight;
+
+	CELOG( "cuizm== CAM_PORT_STILL %s IN || iWidth = %d, iHeight = %d\n", __func__, pPortCap->stMax.iWidth, pPortCap->stMax.iHeight);
+
+	pPortCap->iSupportedFormatCnt = B52_MAX_OUTPUT_FORMAT;
+	for ( i = 0; i < pPortCap->iSupportedFormatCnt; i++ )
+	{
+		pPortCap->eSupportedFormat[i] = gB52OutputFormatList[i];
+	}
+	// add supported raw format.
+	pPortCap->eSupportedFormat[pPortCap->iSupportedFormatCnt] = gCurrentSensorList[iSensorID].stSensorProp.stModuleInfo.eRawFormat;
+	pPortCap->iSupportedFormatCnt++;
+	pPortCap = &pCameraCap->stPortCapability[CAM_PORT_VIDEO_SNAPSHOT];
+
+	pPortCap->bArbitrarySize  = CAM_TRUE;
+	pPortCap->stMin.iWidth    = 176;
+	pPortCap->stMin.iHeight   = 144;
+	pPortCap->stMax.iWidth    = pIspState->stSystemConfig.eStrategy == CAM_PIPELINE_STRATEGY_OFFLINE ? pIspState->stCurrentSensorRawSize.iWidth :
+		pIspState->stCurrentIDIRawSize.iWidth;
+	pPortCap->stMax.iHeight   = pIspState->stSystemConfig.eStrategy == CAM_PIPELINE_STRATEGY_OFFLINE ? pIspState->stCurrentSensorRawSize.iHeight :
+		pIspState->stCurrentIDIRawSize.iHeight;
+
+
+	pPortCap->iSupportedFormatCnt = B52_MAX_OUTPUT_FORMAT;
+	for ( i = 0; i < pPortCap->iSupportedFormatCnt; i++ )
+	{
+		pPortCap->eSupportedFormat[i] = gB52OutputFormatList[i];
+	}
+
+	// shotmode/shotparam capability according to B52 ISP, cfg & single/dual camera.
+	// capture shotmode
+	if ( pIspState && pIspState->iSupportedCaptureShotModeCnt )
+	{
+		pCameraCap->iSupportedCaptureShotModeCnt = pIspState->iSupportedCaptureShotModeCnt;
+		for ( i = 0; i < pIspState->iSupportedCaptureShotModeCnt; i++ )
+		{
+			pCameraCap->eSupportedCaptureShotMode[i] = pIspState->astDfltCaptureShotModeData[i].stShotParam.eShotMode;
+		}
+	}
+	else
+	{
+		pCameraCap->iSupportedCaptureShotModeCnt = 1;
+		pCameraCap->eSupportedCaptureShotMode[0] = CAM_SHOTMODE_MANUAL;
+
+		// update supported shot mode according to cfg file
+	}
+
+	_IspGetShotModeCap( hIspHandle, &pCameraCap->stSupportedCaptureShotParams, bIsBackSensor, CAM_TRUE );
+
+	if ( pIspState && pIspState->iSupportedVideoShotModeCnt )
+	{
+		pCameraCap->iSupportedVideoShotModeCnt = pIspState->iSupportedVideoShotModeCnt;
+		for ( i = 0; i < pIspState->iSupportedVideoShotModeCnt; i++ )
+		{
+			pCameraCap->eSupportedVideoShotMode[i] = pIspState->astDfltVideoShotModeData[i].stShotParam.eShotMode;
+		}
+	}
+	else
+	{
+		pCameraCap->iSupportedVideoShotModeCnt = 1;
+		pCameraCap->eSupportedVideoShotMode[0] = CAM_SHOTMODE_MANUAL;
+
+		// update supported shot mode according to cfg file
+	}
+
+	_IspGetShotModeCap( hIspHandle, &pCameraCap->stSupportedVideoShotParams, bIsBackSensor, CAM_FALSE );
+
+	return CAM_ERROR_NONE;
+}
 
 static CAM_Int32s _get_default_shot_mode_setting( _CAM_ShotModeConfig *pShotModeConfig, CAM_Int32s iShotModeCnt, CAM_Int32s iSensorID,
 		CAM_ShotModeData *pDfltShotModeSetting, CAM_Int32s *pCnt )
